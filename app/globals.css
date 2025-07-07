@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hero-bg {
+  background-image: linear-gradient(rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 1)), url('https://placehold.co/1920x1080/000000/FFFFFF?text=Dynamic+Sports+Action');
+  background-size: cover;
+  background-position: center;
+}
+
+.cta-button {
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
+}
+
+.trial-button {
+  transition: all 0.3s ease;
+}
+
+.trial-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+} 
