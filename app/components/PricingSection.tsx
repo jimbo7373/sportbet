@@ -1,13 +1,16 @@
 'use client';
 
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-
 export default function PricingSection() {
-  const router = useRouter();
-
   const handlePlanSelect = (plan: string) => {
-    router.push(`/register?plan=${plan}`);
+    console.log('Button clicked for plan:', plan);
+    console.log('About to navigate to:', `/register?plan=${plan}`);
+    
+    try {
+      window.location.href = `/register?plan=${plan}`;
+      console.log('Navigation initiated');
+    } catch (error) {
+      console.error('Navigation error:', error);
+    }
   };
 
   return (
@@ -24,9 +27,9 @@ export default function PricingSection() {
           <h4 className="text-2xl font-bold text-blue-400">Try Us Risk-Free</h4>
           <p className="text-5xl font-black text-white my-4">$19</p>
           <p className="text-gray-400 mb-6">For a 2-week trial</p>
-          <button 
+          <button
             onClick={() => handlePlanSelect('trial')}
-            className="trial-button w-full block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg"
+            className="trial-button w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition-colors cursor-pointer"
           >
             Start My Trial
           </button>
@@ -38,9 +41,9 @@ export default function PricingSection() {
           <h4 className="text-2xl font-bold text-white">Full Membership</h4>
           <p className="text-5xl font-black text-white my-4">$299</p>
           <p className="text-gray-400 mb-6">Per Month</p>
-          <button 
+          <button
             onClick={() => handlePlanSelect('monthly')}
-            className="cta-button w-full block bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg"
+            className="cta-button w-full bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-red-700 transition-colors cursor-pointer"
           >
             Join Monthly
           </button>
@@ -51,9 +54,9 @@ export default function PricingSection() {
         <div className="inline-block p-4 bg-gray-800 rounded-xl border border-gray-700">
           <h4 className="text-xl font-bold text-green-400">Best Value!</h4>
           <p className="text-3xl font-black text-white my-2">$699 for 3 Months</p>
-          <button 
+          <button
             onClick={() => handlePlanSelect('quarterly')}
-            className="cta-button mt-2 w-full block bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg"
+            className="cta-button mt-2 w-full bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-red-700 transition-colors cursor-pointer"
           >
             Get 3 Months & Save!
           </button>

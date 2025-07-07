@@ -21,6 +21,7 @@ export default function RegisterForm({ plan, planDetails }: RegisterFormProps) {
     email: '',
     password: '',
     confirmPassword: '',
+    ageConfirmed: false,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -45,6 +46,10 @@ export default function RegisterForm({ plan, planDetails }: RegisterFormProps) {
 
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match';
+    }
+
+    if (!formData.ageConfirmed) {
+      newErrors.ageConfirmed = 'You must confirm that you are 18 years or older';
     }
 
     setErrors(newErrors);
@@ -149,6 +154,21 @@ export default function RegisterForm({ plan, planDetails }: RegisterFormProps) {
           />
           {errors.confirmPassword && <p className="mt-1 text-sm text-red-500">{errors.confirmPassword}</p>}
         </div>
+      </div>
+
+      <div>
+        <input
+          id="ageConfirmed"
+          name="ageConfirmed"
+          type="checkbox"
+          checked={formData.ageConfirmed}
+          onChange={e => setFormData(prev => ({ ...prev, ageConfirmed: e.target.checked }))}
+          className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-600 rounded"
+        />
+        <label htmlFor="ageConfirmed" className="ml-2 text-sm text-gray-300">
+          I confirm that I am 18 years or older
+        </label>
+        {errors.ageConfirmed && <p className="mt-1 text-sm text-red-500">{errors.ageConfirmed}</p>}
       </div>
 
       <div>
