@@ -1,13 +1,15 @@
 'use client';
 
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export default function PricingSection() {
   const router = useRouter();
 
   const handlePlanSelect = (plan: string) => {
-    router.push(`/register?plan=${plan}`);
+    // Prevent default behavior
+    event?.preventDefault();
+    // Navigate to registration page
+    window.location.href = `/register?plan=${plan}`;
   };
 
   return (
@@ -24,12 +26,12 @@ export default function PricingSection() {
           <h4 className="text-2xl font-bold text-blue-400">Try Us Risk-Free</h4>
           <p className="text-5xl font-black text-white my-4">$19</p>
           <p className="text-gray-400 mb-6">For a 2-week trial</p>
-          <button 
-            onClick={() => handlePlanSelect('trial')}
+          <a 
+            href="/register?plan=trial"
             className="trial-button w-full block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg"
           >
             Start My Trial
-          </button>
+          </a>
           <p className="text-xs text-gray-500 mt-4">Subscription continues at $299/month unless canceled.</p>
         </div>
         
@@ -38,12 +40,12 @@ export default function PricingSection() {
           <h4 className="text-2xl font-bold text-white">Full Membership</h4>
           <p className="text-5xl font-black text-white my-4">$299</p>
           <p className="text-gray-400 mb-6">Per Month</p>
-          <button 
-            onClick={() => handlePlanSelect('monthly')}
+          <a 
+            href="/register?plan=monthly"
             className="cta-button w-full block bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg"
           >
             Join Monthly
-          </button>
+          </a>
         </div>
       </div>
       
@@ -51,12 +53,12 @@ export default function PricingSection() {
         <div className="inline-block p-4 bg-gray-800 rounded-xl border border-gray-700">
           <h4 className="text-xl font-bold text-green-400">Best Value!</h4>
           <p className="text-3xl font-black text-white my-2">$699 for 3 Months</p>
-          <button 
-            onClick={() => handlePlanSelect('quarterly')}
+          <a 
+            href="/register?plan=quarterly"
             className="cta-button mt-2 w-full block bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg"
           >
             Get 3 Months & Save!
-          </button>
+          </a>
         </div>
       </div>
       

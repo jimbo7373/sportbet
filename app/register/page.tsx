@@ -18,7 +18,7 @@ const planDetails = {
   },
 };
 
-export default function RegisterPage({
+export default async function RegisterPage({
   searchParams,
 }: {
   searchParams: { plan: string };
