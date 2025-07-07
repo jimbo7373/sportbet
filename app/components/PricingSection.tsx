@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 
 export default function PricingSection() {
@@ -16,7 +18,7 @@ export default function PricingSection() {
           <p className="text-5xl font-black text-white my-4">$19</p>
           <p className="text-gray-400 mb-6">For a 2-week trial</p>
           <Link 
-            href="/subscribe?plan=trial" 
+            href="/register?plan=trial" 
             className="trial-button w-full block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg"
           >
             Start My Trial
@@ -30,7 +32,7 @@ export default function PricingSection() {
           <p className="text-5xl font-black text-white my-4">$299</p>
           <p className="text-gray-400 mb-6">Per Month</p>
           <Link 
-            href="/subscribe?plan=monthly" 
+            href="/register?plan=monthly" 
             className="cta-button w-full block bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg"
           >
             Join Monthly
@@ -43,7 +45,7 @@ export default function PricingSection() {
           <h4 className="text-xl font-bold text-green-400">Best Value!</h4>
           <p className="text-3xl font-black text-white my-2">$699 for 3 Months</p>
           <Link 
-            href="/subscribe?plan=quarterly" 
+            href="/register?plan=quarterly" 
             className="cta-button mt-2 w-full block bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg"
           >
             Get 3 Months & Save!
