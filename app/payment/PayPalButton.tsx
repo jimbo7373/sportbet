@@ -81,8 +81,48 @@ export default function PayPalButton({ amount, planType, email }: PayPalButtonPr
               payerInfo: order.payer
             };
             
+            // Save to sessionStorage for customer page
             sessionStorage.setItem('paymentSuccess', JSON.stringify(paymentData));
             sessionStorage.setItem('customerAuth', 'true');
+            
+            // Save to localStorage for admin database
+            const adminPaymentData = {
+              id: Date.now().toString(),
+              orderId: order.id,
+              email: email,
+              amount: amount,
+              planType: planType,
+              status: 'completed',
+              paymentTime: new Date().toISOString()
+            };
+            
+            const userData = {
+              id: Date.now().toString(),
+              email: email,
+              plan: planType,
+              registrationDate: new Date().toISOString(),
+              paymentStatus: 'completed',
+              amount: amount
+            };
+            
+            // Get existing data
+            const existingPayments = JSON.parse(localStorage.getItem('adminPayments') || '[]');
+            const existingUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            
+            // Add new payment
+            existingPayments.push(adminPaymentData);
+            localStorage.setItem('adminPayments', JSON.stringify(existingPayments));
+            
+            // Update or add user
+            const userIndex = existingUsers.findIndex((user: any) => user.email === email);
+            if (userIndex >= 0) {
+              existingUsers[userIndex] = userData;
+            } else {
+              existingUsers.push(userData);
+            }
+            localStorage.setItem('registeredUsers', JSON.stringify(existingUsers));
+            
+            console.log('Payment and user data saved to admin database');
             
             router.push('/customer?payment=success');
             
