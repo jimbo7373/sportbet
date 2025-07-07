@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 interface User {
   id: string;
@@ -207,12 +208,20 @@ export default function AdminPage() {
           </div>
           <div className="flex justify-between items-center">
             <h2 className="text-3xl font-bold text-white">Admin Dashboard</h2>
-            <button
-              onClick={handleLogout}
-              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-            >
-              Logout
-            </button>
+            <div className="flex gap-3">
+              <Link
+                href="/play-to-win"
+                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+              >
+                Play To Win
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+              >
+                Logout
+              </button>
+            </div>
           </div>
           <p className="mt-2 text-gray-300">
             Manage users and payments
